@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { MovieProps, MovieState } from "./Movie.type";
-import movieApi from "../../utils/movieApi";
+import movieApi from "utils/movieApi";
 
 import css from "./Movie.scss";
 
