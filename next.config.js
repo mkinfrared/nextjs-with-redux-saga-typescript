@@ -2,6 +2,7 @@ require("dotenv").config();
 const withCSS = require("@zeit/next-css");
 const withSass = require("@zeit/next-sass");
 const webpack = require("webpack");
+const TsConfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 module.exports = withSass({
   cssModules: true,
@@ -13,12 +14,12 @@ module.exports = withSass({
     includePaths: ["components/**", "pages/**"]
   },
   webpack(config) {
-    // config.plugins.push(
-    //   new webpack.ProvidePlugin({
-    //     $: "jquery",
-    //     jQuery: "jquery"
-    //   })
-    // );
+    if (config.resolve.plugins) {
+      config.resolve.plugins.push(new TsConfigPathsPlugin());
+    } else {
+      config.resolve.plugins = [new TsConfigPathsPlugin()];
+    }
+
     return config;
   },
   env: {
