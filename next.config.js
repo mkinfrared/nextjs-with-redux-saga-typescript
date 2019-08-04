@@ -23,6 +23,11 @@ module.exports = withSass({
     return config;
   },
   env: {
+    /*
+      You need to define environment variables in .env file,
+      and in order to make them work in your code you have to
+      define them here as well like this (next.js's convenience :) )
+    */
     TMDB_MOVIE_KEY: process.env.TMDB_MOVIE_KEY,
     TMDB_IMAGE_URL: process.env.TMDB_IMAGE_URL
   }
